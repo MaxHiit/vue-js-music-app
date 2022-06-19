@@ -1,30 +1,39 @@
+<script>
+import Navbar from '@/components/Navbar.vue';
+import Topbar from '@/components/TopBar.vue';
+export default {
+	components: {
+		Navbar,
+		Topbar
+	}
+};
+</script>
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+	<div class="root__container">
+		<Navbar />
+		<div class="root__main">
+			<Topbar />
+			<router-view />
+		</div>
+	</div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.root__container {
+	display: grid;
+	grid-template-areas:
+		'navbar__view 	main__view'
+		'player__view player__view';
+	grid-template-columns: auto 1fr;
+	grid-template-rows: 1fr auto;
+	height: 100%;
+	min-height: 100%;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.root__main {
+	grid-area: main__view;
+	width: 100%;
+	padding: 0 2em;
+	overflow-x: hidden;
 }
 </style>
